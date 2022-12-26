@@ -7,24 +7,27 @@ import { HousingLocation } from '../housing-location';
   styleUrls: ['./housing-list.component.css']
 })
 export class HousingListComponent implements OnInit {
-
   @Input() locationList: HousingLocation[] = [];
-  results: HousingLocation[] = [];
-
   @Output() locationSelectedEvent = new EventEmitter<HousingLocation>();
-
-  constructor() { }
+  results: HousingLocation[] = [];
+  
+  selectHousingLocation(location: HousingLocation) { 
+    this.locationSelectedEvent.emit(location);
+  }
 
   ngOnInit(): void {
   }
 
   searchHousingLocations(searchText: string) {
     if (!searchText) return;
-
-    this.results = this.locationList.filter((location: any) => location.city.toLowerCase().includes(searchText.toLowerCase()));
+    this.results = this.locationList.filter(
+      (location: HousingLocation) => location.city
+        .toLowerCase()
+        .includes(
+            searchText.toLowerCase()
+      ));
   }
-
-  selectHousingLocation(location: HousingLocation) {
-    this.locationSelectedEvent.emit(location);
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 }

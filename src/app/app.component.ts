@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HousingLocation } from './housing-location';
+import { HousingLocation } from "./housing-location";
 
 @Component({
   selector: 'app-root',
@@ -39,9 +39,13 @@ export class AppComponent {
     }
   ];
 
-  selectedLocation: HousingLocation | undefined;// = this.housingLocationList[0];
-
-  updateSelectedLocation(location: HousingLocation) {
+  selectedLocation: HousingLocation | undefined;
+  
+  updateSelectedLocation(location: HousingLocation) { 
     this.selectedLocation = location;
+  } 
+  searchHousingLocations() {
+
   }
+
 }
